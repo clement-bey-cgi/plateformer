@@ -1,27 +1,18 @@
 package com.example.plateformer.engine;
 
-import java.awt.EventQueue;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.JFrame;
-
-import com.example.plateformer.datamanager.DataManager;
 import com.example.plateformer.engine.audio.Audio;
 import com.example.plateformer.engine.graphics.RootGroup;
-import com.example.plateformer.engine.input.Input;
+import com.example.plateformer.engine.input.MyScene;
 import com.example.plateformer.engine.osinterface.OsInterface;
-import com.example.plateformer.objectsystem.ObjectSystem;
 import com.example.plateformer.simulation.Simulation;
 
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.shape.Circle;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class GameEngine extends Application{
+public class GameEngine extends Application {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,31 +20,21 @@ public class GameEngine extends Application{
 	
 	private static OsInterface osInterface = new OsInterface();
 	
-	private static Input input = new Input();
-	
-	private static RootGroup root = new RootGroup();
-	
-	public GameEngine() {}
+	private static MyScene scene = new MyScene(new RootGroup(), 800, 800);
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		System.out.println("Méthode start lancée");
-        Scene scene = new Scene(root, 400, 300);
+		stage.centerOnScreen();
         stage.setTitle("Plateformer");
         stage.setScene(scene);
         stage.show();
 	}
 	
 	public static void main(String [ ] args) {
-		System.out.println("DEBUT DU MAIN");
+		Simulation simulation = new Simulation();
+		scene.addPropertyChangeListener(simulation.getSimControl());
 		
 		Application.launch(GameEngine.class, args);
-		
-		System.out.println("FIN DU MAIN");
-	}
-	
-	public Input getInput() {
-		return input;
 	}
 
 	public Audio getAudio() {
@@ -62,10 +43,6 @@ public class GameEngine extends Application{
 
 	public OsInterface getOsInterface() {
 		return osInterface;
-	}
-	
-	public void print(String string) {
-		System.out.println(string);
 	}
 }
 

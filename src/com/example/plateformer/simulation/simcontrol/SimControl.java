@@ -8,6 +8,8 @@ import com.example.plateformer.simulation.ai.PlayerAI;
 import com.example.plateformer.simulation.logic.GameLogic;
 import com.example.plateformer.simulation.logic.Physics;
 
+import javafx.scene.input.KeyCode;
+
 public class SimControl implements PropertyChangeListener {
 	
 	private BotAI botAI = new BotAI();
@@ -36,13 +38,8 @@ public class SimControl implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		dispatch(KeyboardControl.getActionFromChar((Character) event.getNewValue()));
-	}
-	
-	private void dispatch(Action action) {
-		if (Action.Random.equals(action)) {
-			System.out.println("appuye");
-		}
+		System.out.println("simControl " + event.getNewValue());
+		playerAI.computeDecision((KeyCode) event.getNewValue());
 	}
 	
 }
