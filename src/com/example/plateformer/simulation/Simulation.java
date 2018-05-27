@@ -1,6 +1,8 @@
 package com.example.plateformer.simulation;
 
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import com.example.plateformer.simulation.ai.BotAI;
 import com.example.plateformer.simulation.ai.PlayerAI;
@@ -12,23 +14,7 @@ public class Simulation {
 
 	private SimControl simControl;
 	
-	private BotAI botAI;
-	
-	private PlayerAI playerAI;
-	
-	private GameLogic gameLogic;	
-	
-	private Physics physics;
-
-	public Simulation(SimControl simControl, BotAI botAI, PlayerAI playerAI, GameLogic gameLogic, Physics physics) {
-		super();
-		this.simControl = simControl;
-		this.botAI = botAI;
-		this.playerAI = playerAI;
-		this.gameLogic = gameLogic;
-		this.physics = physics;
+	public SimControl getSimControl() {
+		return simControl;
 	}
-	
-	
-
 }
