@@ -1,7 +1,11 @@
 package com.example.plateformer.engine.input;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+
+import com.example.plateformer.engine.graphics.RootGroup;
+
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,11 +22,12 @@ public class MyScene extends Scene {
 	
 	private KeyCode keyTyped;
 	
-	// TODO Stocker le root groupe comme un attribut ? 
+	private RootGroup root;
 
-	public MyScene(Parent root, double width, double height) {
+	public MyScene(RootGroup root, double width, double height) {
 		super(root, width, height);
 		
+		this.root = root;
 		this.support = new PropertyChangeSupport(this);
 		
 		setEventHandlers();
@@ -48,7 +53,6 @@ public class MyScene extends Scene {
 		}
 
 		support.firePropertyChange("keyPressed", this.keyPressed, newKey);	
-		this.keyPressed = newKey;
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {

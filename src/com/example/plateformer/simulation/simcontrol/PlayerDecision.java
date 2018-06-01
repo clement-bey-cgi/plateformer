@@ -5,7 +5,8 @@ import java.util.Map;
 import javafx.scene.input.KeyCode;
 
 public enum PlayerDecision {
-	MoveLeft(KeyCode.LEFT);
+	MoveLeft(KeyCode.LEFT), 
+	MoveRight(KeyCode.RIGHT);
 	
 	private KeyCode keycode;
 	

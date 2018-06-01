@@ -3,6 +3,7 @@ package com.example.plateformer.simulation.simcontrol;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import com.example.plateformer.objectsystem.ObjectSystem;
 import com.example.plateformer.simulation.ai.BotAI;
 import com.example.plateformer.simulation.ai.PlayerAI;
 import com.example.plateformer.simulation.logic.GameLogic;
@@ -12,13 +13,17 @@ import javafx.scene.input.KeyCode;
 
 public class SimControl implements PropertyChangeListener {
 	
-	private BotAI botAI = new BotAI();
+	private BotAI botAI;
 	
-	private PlayerAI playerAI = new PlayerAI();
+	private PlayerAI playerAI;
 	
-	private GameLogic gameLogic = new GameLogic();	
+	private GameLogic gameLogic;	
 	
-	private Physics physics = new Physics();
+	private Physics physics;
+
+	public SimControl(ObjectSystem objectSystem) {
+		this.playerAI = new PlayerAI(objectSystem);
+	}
 
 	public BotAI getBotAI() {
 		return botAI;

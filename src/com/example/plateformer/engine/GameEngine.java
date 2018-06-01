@@ -1,9 +1,12 @@
 package com.example.plateformer.engine;
 
+import java.beans.PropertyChangeListener;
+
 import com.example.plateformer.engine.audio.Audio;
 import com.example.plateformer.engine.graphics.RootGroup;
 import com.example.plateformer.engine.input.MyScene;
 import com.example.plateformer.engine.osinterface.OsInterface;
+import com.example.plateformer.objectsystem.ObjectSystem;
 import com.example.plateformer.simulation.Simulation;
 
 import javafx.application.Application;
@@ -31,8 +34,11 @@ public class GameEngine extends Application {
 	}
 	
 	public static void main(String [ ] args) {
-		Simulation simulation = new Simulation();
+		ObjectSystem objectSystem = new ObjectSystem();
+		
+		Simulation simulation = new Simulation(objectSystem);
 		scene.addPropertyChangeListener(simulation.getSimControl());
+		objectSystem.addPropertyChangeListener((PropertyChangeListener) scene.getRoot());
 		
 		Application.launch(GameEngine.class, args);
 	}
