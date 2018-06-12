@@ -17,7 +17,7 @@ public class Player {
 	}
 
 	public void setPosX(int posX) {
-		objectSystem.getPropertyChangeSupport().firePropertyChange("posX", this.posX, posX);
+		objectSystem.getPropertyChangeSupport().firePropertyChange("player.posX", this.posX, posX);
 		this.posX = posX;
 		System.out.println("OBJECT SYSTEM MIS A JOUR ");
 	}

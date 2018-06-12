@@ -20,10 +20,10 @@ public class PlayerAI {
 				case MoveLeft : 
 					System.out.println("Le joueur se déplace à gauche !");
 					// TODO COMMENT IMPLEMENTER CA PRORPE ? 
-					objectSystem.getPlayer().setPosX(objectSystem.getPlayer().getPosX() - 1);
+					objectSystem.getPlayer().setPosX(objectSystem.getPlayer().getPosX() - 5);
 					break;
 				case MoveRight :
-					objectSystem.getPlayer().setPosX(objectSystem.getPlayer().getPosX() + 1);
+					objectSystem.getPlayer().setPosX(objectSystem.getPlayer().getPosX() + 5);
 					break;
 				default : 
 					break;
