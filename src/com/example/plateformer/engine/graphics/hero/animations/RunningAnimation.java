@@ -30,8 +30,10 @@ public class RunningAnimation extends Transition {
 
 	@Override
 	protected void interpolate(double animationPourcentage) {
+		// TODO gérer les changements de direction
 		final int currentFrameIndex = (int) Math.floor(animationPourcentage * frameNumberInSprite);
 		this.imageView.viewportProperty().set(new Rectangle2D(currentFrameIndex * width, 0, width, height));
+		this.imageView.translateXProperty().set(this.imageView.getTranslateX() + 2);
 		if (animationPourcentage == 1.0) {
 			this.imageView.viewportProperty().set(new Rectangle2D(0, 0, width, height));
 		}
